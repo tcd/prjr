@@ -1,0 +1,15 @@
+#   ┌─┐┬┌┬┐┬┌─┐┌┐┌┌─┐┬─┐┌─┐
+#   │ ┬│ │ ││ ┬││││ │├┬┘├┤
+#  o└─┘┴ ┴ ┴└─┘┘└┘└─┘┴└─└─┘
+
+test/testdata/example_projects/*
+
+# Mac files
+.DS_store
+
+# Misc.
+!.gitkeep
+!.keep
+.idea
+.vscode
+**/tags
