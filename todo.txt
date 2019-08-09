@@ -3,3 +3,4 @@
 (D) 2019-08-08 Add support for `svn` and `hg`
 2019-08-09 Add subcommand to update a project using its VCS.
 2019-08-09 Add subcommand to list all projects.
+2019-08-09 Add subcommand to change directory to a project.
