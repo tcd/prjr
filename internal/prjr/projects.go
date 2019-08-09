@@ -9,3 +9,8 @@ func (pjs *Projects) Add(p ...Project) {
 		*pjs = append(*pjs, project)
 	}
 }
+
+// Save writes Projecs to a user's prjr.json file.
+func (pjs Projects) Save() error {
+	return writeProjectsToFile(getProjectsFilePath(), pjs)
+}
