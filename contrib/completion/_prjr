@@ -1,0 +1,14 @@
+#compdef prjr
+
+_prjr() {
+  integer ret=1
+  local -a args
+  args+=(
+    # …
+    '(- *)'{-h,--help}'[Display help and exit]'
+  )
+  _arguments $args[@] && ret=0
+  return ret
+}
+
+_prjr

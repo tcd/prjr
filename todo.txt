@@ -10,3 +10,4 @@ x 2019-08-09 2019-08-09 Add subcommand to list all projects.
 2019-08-09 Use go modules for deps.
 2019-08-09 Generate manpage.
 2019-08-09 Generate shell completion.
+2019-08-09 Confirm before adding new project?
