@@ -1,8 +1,12 @@
-2019-08-08 Create a new project from the current directory
-2019-08-08 Look into go terminal interface libraries
+x 2019-08-09 2019-08-08 Create a new project from the current directory
+x 2019-08-09 2019-08-09 Add subcommand to list all projects.
+
+(B) 2019-08-09 Ensure atomic writes to prjr.json, look into preventing race conditions for file writes.
 (D) 2019-08-08 Add support for `svn` and `hg`
+2019-08-08 Look into go terminal interface libraries
 2019-08-09 Add subcommand to remove a project.
 2019-08-09 Add subcommand to update a project using its VCS.
 2019-08-09 Add subcommand to change directory to a project.
-2019-08-09 Add subcommand to list all projects.
-2019-08-09 Ensure atomic writes to prjr.json, look into preventing race conditions for file writes.
+2019-08-09 Use go modules for deps.
+2019-08-09 Generate manpage.
+2019-08-09 Generate shell completion.
