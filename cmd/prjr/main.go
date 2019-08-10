@@ -25,10 +25,10 @@ func main() {
 		switch os.Args[1] {
 		case "add":
 			addCmd(projects)
-		case "jump":
-			jumpCmd(projects)
 		case "list":
 			listCmd(projects)
+		case "remove":
+			rmCmd(projects)
 		default:
 			flag.Usage()
 		}
