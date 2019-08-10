@@ -38,6 +38,11 @@ func main() {
 }
 
 func usage() {
+	fmt.Printf("Usage: %s <command> [options]\n", os.Args[0])
+	flag.PrintDefaults()
+}
+
+func fancyUsage() {
 	fmt.Println(titleString())
 	fmt.Printf("Usage: %s <command> [options]\n", os.Args[0])
 	flag.PrintDefaults()
