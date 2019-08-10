@@ -17,8 +17,8 @@ func listCmd(pjs prjr.Projects) {
 	if *longFlag == true {
 		fmt.Println("TODO: long list. Accept args for fields to list?")
 	} else {
-		if len(pjs) > 0 {
-			for _, project := range pjs {
+		if len(pjs.P) > 0 {
+			for _, project := range pjs.P {
 				fmt.Println(project.Root)
 			}
 		} else {
