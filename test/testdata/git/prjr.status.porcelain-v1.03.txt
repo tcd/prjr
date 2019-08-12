@@ -1,0 +1,15 @@
+## master...origin/master
+ M cmd/prjr/main.go
+ M internal/prjr/projects.go
+ M readme.md
+ M scripts/clean-docker-cache.sh
+ D scripts/install-repos.sh
+A  test/testdata/git/prjr.status.poecelain-v1.1.txt
+A  test/testdata/git/prjr.status.poecelain-v1.2.txt
+A  test/testdata/git/prjr.status.porcelain-v2.1.txt
+?? cmd/prjr/cmd_stat.go
+?? internal/git/
+?? internal/prjr/readme.md
+?? internal/prjr/status.go
+?? reference/
+?? scripts/get-repos.sh

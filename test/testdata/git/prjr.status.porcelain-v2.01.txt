@@ -1,0 +1,17 @@
+# branch.oid 6f8b3ff360976d7ea76877509702b73f69fe4fc1
+# branch.head master
+# branch.upstream origin/master
+# branch.ab +0 -0
+1 .M N... 100644 100644 100644 8f8c7fb1dab980bd32daffd44971d02c818d10fe 8f8c7fb1dab980bd32daffd44971d02c818d10fe cmd/prjr/main.go
+1 .M N... 100644 100644 100644 d17b6b71c04c8056e30e54497be854e6a5d9ecfb d17b6b71c04c8056e30e54497be854e6a5d9ecfb internal/prjr/projects.go
+1 .M N... 100644 100644 100644 ccb901bfe4ce534672de3515e1ebf17f2ca6f65c ccb901bfe4ce534672de3515e1ebf17f2ca6f65c readme.md
+1 .M N... 100644 100644 100755 158ac50ab7f34e02d649b6995f3992887ba96856 158ac50ab7f34e02d649b6995f3992887ba96856 scripts/clean-docker-cache.sh
+1 .D N... 100644 100644 000000 0617957607436ea2891eda1a23510dc868d8046d 0617957607436ea2891eda1a23510dc868d8046d scripts/install-repos.sh
+1 A. N... 000000 100644 100644 0000000000000000000000000000000000000000 d9b6a6f7f66559ed71a39216054ea1eb05786fa1 test/testdata/git/prjr.status.1.txt
+1 A. N... 000000 100644 100644 0000000000000000000000000000000000000000 5659352835afc84ec006585ab1416dfbd6ba7a80 test/testdata/git/prjr.status.2.txt
+? cmd/prjr/cmd_stat.go
+? internal/git/
+? internal/prjr/readme.md
+? internal/prjr/status.go
+? reference/
+? scripts/get-repos.sh

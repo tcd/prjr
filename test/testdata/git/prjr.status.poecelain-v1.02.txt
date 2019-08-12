@@ -1,0 +1,10 @@
+## master...origin/master
+ M cmd/prjr/main.go
+ M internal/prjr/projects.go
+ M scripts/clean-docker-cache.sh
+ D scripts/install-repos.sh
+?? cmd/prjr/cmd_stat.go
+?? internal/prjr/status.go
+?? scripts/get-repos.sh
+?? scripts/git-prompt.zsh
+?? test/
