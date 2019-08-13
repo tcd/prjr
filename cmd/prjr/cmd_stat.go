@@ -10,7 +10,7 @@ import (
 func statCmd(pjs prjr.Projects) {
 	root := ""
 	prompt := &survey.Select{
-		Message: "Which project would you like a status for?",
+		Message: "Which project would you like to check on?",
 		Options: pjs.Roots(),
 	}
 	survey.AskOne(prompt, &root)
