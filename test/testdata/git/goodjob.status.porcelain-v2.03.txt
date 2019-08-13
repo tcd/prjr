@@ -1,0 +1,4 @@
+# branch.oid a7160ba9d14313d66850ff1aa8d3119a49587d99
+# branch.head (detached)
+u UU N... 100644 100644 100644 100644 b4df2a93a5fd2d7f07c10fd47a9421ad436feb1c dcd63a9c8427e39509f69df6da3d452989200db5 5dc2a9357f95c4bd32fb9e44ca7e4585061491bb src/app/registration/registration.module.ts
+fatal: ref HEAD is not a symbolic ref
