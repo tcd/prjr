@@ -17,6 +17,7 @@ type GitFileInfo struct {
 	Copied          bool
 	UpdatedUnmerged bool
 	Untracked       bool
+	Staged          bool
 }
 
 // GitStatus models the information about a git reposiory's state.
@@ -34,9 +35,9 @@ type GitStatus struct {
 	// Copied          bool
 	// UpdatedUnmerged bool
 	// Untracked       bool
+	// Staged          bool
 
 	Stashed int
-	// Staged  bool
 }
 
 // Diverged is true if a branch is both ahead of & behind upstream.

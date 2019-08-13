@@ -93,12 +93,24 @@ func parseFileInfo(lines []string) GitFileInfo {
 		if fields[0] == "1" {
 			info := fields[1]
 			switch info {
+			// Added
 			case ".A":
 				fileInfo.Added = true
+			case "A.":
+				fileInfo.Added = true
+				fileInfo.Staged = true
+			// Deleted
 			case ".D":
 				fileInfo.Deleted = true
+			case "D.":
+				fileInfo.Deleted = true
+				fileInfo.Staged = true
+			// Modified
 			case ".M":
 				fileInfo.Modified = true
+			case "M.":
+				fileInfo.Modified = true
+				fileInfo.Staged = true
 			}
 			continue
 		}
@@ -106,10 +118,18 @@ func parseFileInfo(lines []string) GitFileInfo {
 		if fields[0] == "2" {
 			info := fields[1]
 			switch info {
+			// Renamed
 			case ".R":
 				fileInfo.Renamed = true
+			case "R.":
+				fileInfo.Renamed = true
+				fileInfo.Staged = true
+			// Copied
 			case ".C":
 				fileInfo.Copied = true
+			case "C.":
+				fileInfo.Copied = true
+				fileInfo.Staged = true
 			}
 			continue
 		}
