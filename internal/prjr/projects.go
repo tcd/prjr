@@ -17,6 +17,26 @@ func (pjs Projects) Save() error {
 	return writeProjectsToFile(getProjectsFilePath(), pjs.P)
 }
 
+// Roots returns a slice of string with all Project Roots.
+func (pjs Projects) Roots() []string {
+	roots := make([]string, len(pjs.P))
+	for i, project := range pjs.P {
+		roots[i] = project.Root
+	}
+	return roots
+}
+
+// FindByRoot returns a Project identified by its Root,
+// and a boolean which is false if no matching Project is found.
+func (pjs Projects) FindByRoot(root string) (project Project, ok bool) {
+	for _, pj := range pjs.P {
+		if pj.Root == root {
+			return pj, true
+		}
+	}
+	return Project{}, false
+}
+
 // RemoveByRoot removes a Project identified by its Root.
 func (pjs *Projects) RemoveByRoot(root string) {
 	var newPjs Projects

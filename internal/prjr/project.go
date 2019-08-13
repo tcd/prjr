@@ -1,8 +1,11 @@
 package prjr
 
 import (
+	"fmt"
 	"os"
 	"time"
+
+	"github.com/tcd/prjr/internal/stat"
 )
 
 // Project is the main datastructure of the prjr application.
@@ -32,4 +35,16 @@ func GetProjects() ([]Project, error) {
 // SaveProjects writes a slice of Project to a user's prjr.json file.
 func SaveProjects(projects []Project) error {
 	return writeProjectsToFile(getProjectsFilePath(), projects)
+}
+
+// GitStatus returns information about a local Git repository.
+func (p Project) GitStatus() (stat.GitStatus, error) {
+	if p.VCS == false {
+		return stat.GitStatus{}, fmt.Errorf("error: Project is not a git repository")
+	}
+	stats, err := stat.GetGitStatus(p.Root)
+	if err != nil {
+		return stat.GitStatus{}, err
+	}
+	return stats, nil
 }
