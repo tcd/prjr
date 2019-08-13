@@ -12,7 +12,7 @@ func GetGitStatus(path string) (GitStatus, error) {
 		return GitStatus{}, err
 	}
 
-	branchInfo, fileInfo := parseGitStatusPorcelainV2(cmdOutput)
+	branchInfo, fileInfo := parseGitStatusPorcelain(cmdOutput)
 	stashCount := getStashes(path)
 
 	return GitStatus{
@@ -33,7 +33,7 @@ func gitStatusCmd(path string) (string, error) {
 }
 
 // Parses the output of `git status --porcelain=v2 -b`
-func parseGitStatusPorcelainV2(output string) (GitBranchInfo, GitFileInfo) {
+func parseGitStatusPorcelain(output string) (GitBranchInfo, GitFileInfo) {
 	lines := strings.Split(output, "\n")
 	var branchLines, fileLines []string
 	for _, line := range lines {
