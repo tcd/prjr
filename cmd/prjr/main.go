@@ -31,6 +31,8 @@ func main() {
 			rmCmd(projects)
 		case "stat":
 			statCmd(projects)
+		case "todo":
+			todoCmd(projects)
 		default:
 			usage()
 		}
@@ -60,7 +62,10 @@ remove, rm
 	Remove an existing project
 
 stat
-	Print Git info for a project`)
+	Print Git info for a project
+
+todo
+	Search a project for TODO comments`)
 	flag.PrintDefaults()
 }
 

@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/tcd/prjr/internal/stat"
+	"github.com/tcd/prjr/internal/todo"
 )
 
 // Project is the main datastructure of the prjr application.
@@ -47,4 +48,15 @@ func (p Project) GitStatus() (stat.GitStatus, error) {
 		return stat.GitStatus{}, err
 	}
 	return stats, nil
+}
+
+// TODOs returns all TODO comments in a Project.
+func (p Project) TODOs() []todo.Todo {
+	return todo.Todos(p.Root)
+}
+
+// TODOCount returns the number of TODO comments in a Project.
+func (p Project) TODOCount() int {
+	return todo.TodosCount(p.Root)
+
 }
