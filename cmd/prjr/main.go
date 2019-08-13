@@ -9,7 +9,7 @@ import (
 )
 
 func init() {
-	flag.Usage = usage
+	flag.Usage = fancyUsage
 }
 
 func main() {
@@ -25,12 +25,14 @@ func main() {
 		switch os.Args[1] {
 		case "add":
 			addCmd(projects)
-		case "list":
+		case "list", "ls":
 			listCmd(projects)
-		case "remove":
+		case "remove", "rm":
 			rmCmd(projects)
+		case "stat":
+			statCmd(projects)
 		default:
-			flag.Usage()
+			usage()
 		}
 	} else {
 		flag.Usage()
@@ -38,13 +40,27 @@ func main() {
 }
 
 func usage() {
-	fmt.Printf("Usage: %s <command> [options]\n", os.Args[0])
+	fmt.Printf("Usage: %s <command>\n", os.Args[0])
+	fmt.Println("Commands: add, list, ls remove, rm, stat")
 	flag.PrintDefaults()
 }
 
 func fancyUsage() {
 	fmt.Println(titleString())
-	fmt.Printf("Usage: %s <command> [options]\n", os.Args[0])
+	fmt.Printf("Usage: %s <command>\n", os.Args[0])
+	fmt.Println(`Commands:
+
+add
+	Add a new project
+
+list, ls
+	List existing projects
+
+remove, rm
+	Remove an existing project
+
+stat
+	Print Git info for a project`)
 	flag.PrintDefaults()
 }
 
