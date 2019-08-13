@@ -3,7 +3,6 @@ x 2019-08-09 2019-08-09 Add subcommand to list all projects.
 x 2019-08-12 2019-08-09 Add subcommand to remove a project.
 
 (B) 2019-08-09 Ensure atomic writes to prjr.json, look into preventing race conditions for file writes.
-(D) 2019-08-08 Add support for `svn` and `hg`
 2019-08-08 Look into go terminal interface libraries
 2019-08-09 Add subcommand to update a project using its VCS.
 2019-08-09 Add subcommand to change directory to a project.
