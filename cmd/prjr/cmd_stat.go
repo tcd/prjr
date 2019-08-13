@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/AlecAivazis/survey"
-	"github.com/davecgh/go-spew/spew"
 	"github.com/tcd/prjr/internal/prjr"
 )
 
@@ -22,7 +21,7 @@ func statCmd(pjs prjr.Projects) {
 			if err != nil {
 				fmt.Println(err)
 			}
-			spew.Dump(status)
+			fmt.Println(status)
 		}
 	}
 }
