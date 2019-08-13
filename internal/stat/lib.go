@@ -111,6 +111,9 @@ func parseFileInfo(lines []string) GitFileInfo {
 			case "M.":
 				fileInfo.Modified = true
 				fileInfo.Staged = true
+			case "MM":
+				fileInfo.Modified = true
+				fileInfo.Staged = true
 			}
 			continue
 		}
