@@ -49,6 +49,7 @@ docker-clean:
 build: go-build
 
 clean: go-clean
+	rm -rf build
 
 test: go-test
 
@@ -58,4 +59,4 @@ uninstall: go-uninstall
 
 .PHONY: clean test install uninstall
 .PHONY: go-build go-clean go-test go-install go-uninstall
-.PHONY: docker docker-build docker-run
+.PHONY: docker docker-build docker-clean docker-run
