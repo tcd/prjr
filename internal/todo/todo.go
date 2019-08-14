@@ -19,7 +19,7 @@ func (t Todo) String() string {
 	}
 	sb.WriteString(": ")
 	sb.WriteString(t.Content)
-	// sb.WriteString("\t(" + t.File + ")")
+	sb.WriteString("\t(" + t.File + ")")
 
 	return sb.String()
 }
