@@ -50,6 +50,46 @@ func (gs GitStatus) Diverged() bool {
 	return false
 }
 
+func (gs GitStatus) String() string {
+	var s []string // This isn't too efficient but it will, at most, reallocate s 12 times.
+
+	if gs.BranchName != "" {
+		s = append(s, "Branch: "+gs.BranchName)
+	}
+	if gs.Ahead > 0 {
+		s = append(s, "Ahead by "+string(gs.Ahead))
+	}
+	if gs.Behind > 0 {
+		s = append(s, "Behind by "+string(gs.Behind))
+	}
+	if gs.Modified {
+		s = append(s, "Modified")
+	}
+	if gs.Added {
+		s = append(s, "Added")
+	}
+	if gs.Deleted {
+		s = append(s, "Deleted")
+	}
+	if gs.UpdatedUnmerged {
+		s = append(s, "Unmerged")
+	}
+	if gs.Untracked {
+		s = append(s, "Untracked")
+	}
+	if gs.Staged {
+		s = append(s, "Staged")
+	}
+	if gs.Stashed > 0 {
+		if gs.Stashed == 1 {
+			s = append(s, "1 Stash")
+		} else {
+			s = append(s, string(gs.Stashed)+" Stashes")
+		}
+	}
+	return strings.Join(s, ", ")
+}
+
 // GitStatusIconSet is used to hold icons for use in printing.
 type GitStatusIconSet struct {
 	Untracked string
