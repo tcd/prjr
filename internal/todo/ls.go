@@ -21,7 +21,7 @@ func ListFilesRecursive(targetPath string) []string {
 			if !contains(ignoredFiles, fileName) {
 				extension := filepath.Ext(path)
 				if !contains(ignoredExtensions, extension) {
-					paths = append(paths, filepath.Join(targetPath, path))
+					paths = append(paths, path)
 				}
 
 			}
