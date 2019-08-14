@@ -3,7 +3,6 @@ package prjr
 import (
 	"fmt"
 	"os"
-	"time"
 
 	"github.com/tcd/prjr/internal/stat"
 	"github.com/tcd/prjr/internal/todo"
@@ -11,12 +10,11 @@ import (
 
 // Project is the main datastructure of the prjr application.
 type Project struct {
-	Root      string    `json:"root"`      // Path to the the Project's root directory on the local machine. TODO: expand env variables in root? Need constructor function?
-	Name      string    `json:"name"`      // Name for describing the Project
-	Timestamp time.Time `json:"timestamp"` // Timestamp used to identify the project
-	VCS       bool      `json:"vcs"`       // Whether or not the Project is under version control
-	Favorite  bool      `json:"favorite"`  // Favorite projects are listed first
-	Fork      bool      `json:"fork"`      // True if the project is forked from another repository
+	Root     string `json:"root"`     // Path to the the Project's root directory on the local machine. TODO: expand env variables in root? Need constructor function?
+	Name     string `json:"name"`     // Name for describing the Project
+	VCS      bool   `json:"vcs"`      // Whether or not the Project is under version control
+	Favorite bool   `json:"favorite"` // Favorite projects are listed first
+	Fork     bool   `json:"fork"`     // True if the project is forked from another repository
 }
 
 // NewProjectHere returns a new Project for the current directory.
