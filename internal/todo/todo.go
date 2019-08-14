@@ -43,6 +43,7 @@ var ignoredFolders = []string{
 	".mypy_cache",
 	".sass-cache",
 	"dist",
+	"undo",
 }
 
 // don't search these files for TODOs
