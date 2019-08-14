@@ -63,6 +63,11 @@ func (gs GitStatus) BehindString() string {
 	return strconv.Itoa(gs.Ahead)
 }
 
+// StashString returns the Stashes field as a string.
+func (gs GitStatus) StashString() string {
+	return strconv.Itoa(gs.Stashed)
+}
+
 func (gs GitStatus) String() string {
 	var s []string // This isn't too efficient but it will, at most, reallocate s 12 times.
 
@@ -97,7 +102,7 @@ func (gs GitStatus) String() string {
 		if gs.Stashed == 1 {
 			s = append(s, "1 Stash")
 		} else {
-			s = append(s, string(gs.Stashed)+" Stashes")
+			s = append(s, string(gs.StashString())+" Stashes")
 		}
 	}
 	return strings.Join(s, ", ")
