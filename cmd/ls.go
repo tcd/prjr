@@ -5,8 +5,8 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
+	"github.com/tcd/prjr/internal/cli"
 	"github.com/tcd/prjr/internal/prjr"
-	"github.com/tcd/prjr/internal/tui"
 )
 
 var lsCmd = &cobra.Command{
@@ -49,7 +49,7 @@ func init() {
 
 func listFunc(pjs prjr.Projects) {
 	if len(pjs.P) > 0 {
-		fmt.Print(tui.Tab(pjs))
+		fmt.Print(cli.Tab(pjs))
 	} else {
 		fmt.Println("No projects")
 	}
@@ -77,7 +77,7 @@ func listFuncFields(pjs prjr.Projects, fields []string) {
 
 func listFuncTable(pjs prjr.Projects) {
 	if len(pjs.P) > 0 {
-		tui.Table(pjs)
+		cli.Table(pjs)
 	} else {
 		fmt.Println("No projects")
 	}
