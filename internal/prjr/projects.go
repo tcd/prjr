@@ -67,3 +67,15 @@ func (pjs *Projects) RemoveByRoot(root string) {
 	}
 	pjs.P = newPjs.P
 }
+
+// GetLocalProjects returns the contents of a user's prjr.json file
+// as a Products struct.
+func GetLocalProjects() (Projects, error) {
+	var projects Projects
+	existingProjects, err := GetProjects()
+	if err != nil {
+		return projects, err
+	}
+	projects.Add(existingProjects...)
+	return projects, nil
+}

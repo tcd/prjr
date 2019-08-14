@@ -17,7 +17,7 @@ go-clean:
 
 # Install prjr to $GOBIN.
 go-install:
-	cd cmd/$(PROJECT_NAME) && go install
+	go install
 
 # Remove prjr from $GOBIN.
 go-uninstall:
