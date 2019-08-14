@@ -60,7 +60,7 @@ func (gs GitStatus) AheadString() string {
 
 // BehindString returns the Behind field as a string.
 func (gs GitStatus) BehindString() string {
-	return strconv.Itoa(gs.Ahead)
+	return strconv.Itoa(gs.Behind)
 }
 
 // StashString returns the Stashes field as a string.
