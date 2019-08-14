@@ -13,3 +13,6 @@ x 2019-08-13 2019-08-09 Use go modules for deps.
 2019-08-12 Change `Projects` to a `map["Root"]Project`?
 2019-08-13 Look into "https://github.com/jedib0t/go-pretty".
 2019-08-13 Look into "https://github.com/olekukonko/tablewriter".
+2019-08-14 Implement upstream tracking for forked projects.
+2019-08-14 Add test coverage stats for Projects?
+2019-08-14 Expand TODO functionality.
