@@ -28,10 +28,10 @@ func TabProjects(pjs prjr.Projects) string {
 func TabTodos(todos []todo.Todo) string {
 	var buf bytes.Buffer
 	writer := tabwriter.NewWriter(&buf, 0, 8, 1, '\t', tabwriter.AlignRight)
-	fmt.Fprintln(writer, strings.Join([]string{"path", "type", "content"}, "\t"))
-	fmt.Fprintln(writer, strings.Join([]string{"----", "----", "-------"}, "\t"))
+	fmt.Fprintln(writer, strings.Join([]string{"type", "content", "path"}, "\t"))
+	fmt.Fprintln(writer, strings.Join([]string{"----", "-------", "----"}, "\t"))
 	for _, t := range todos {
-		fmt.Fprintln(writer, strings.Join([]string{t.RelPath, t.Type, t.Content}, "\t"))
+		fmt.Fprintln(writer, strings.Join([]string{t.Type, t.Content, t.File}, "\t"))
 	}
 	err := writer.Flush()
 	if err != nil {

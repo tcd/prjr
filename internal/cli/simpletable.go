@@ -20,7 +20,7 @@ func Table(pjs prjr.Projects) {
 			{Align: simpletable.AlignCenter, Text: "Name"},
 			{Align: simpletable.AlignCenter, Text: "Root"},
 			{Align: simpletable.AlignCenter, Text: "TODOs"},
-			// {Align: simpletable.AlignCenter, Text: "Git Status"},
+			{Align: simpletable.AlignCenter, Text: "Git Status"},
 		},
 	}
 
@@ -29,7 +29,7 @@ func Table(pjs prjr.Projects) {
 			{Text: row[0].(string)},
 			{Text: row[1].(string)},
 			{Align: simpletable.AlignLeft, Text: fmt.Sprintf("%d", row[2].(int))},
-			// {Text: row[3].(string)},
+			{Text: row[3].(string)},
 		}
 		table.Body.Cells = append(table.Body.Cells, r)
 	}
@@ -49,7 +49,7 @@ func tableFormat(pjs prjr.Projects) [][]interface{} {
 		pjData = append(pjData, []interface{}{pj.TODOCount()}...)
 		if pj.VCS {
 			gs, _ := pj.GitStatus()
-			pjData = append(pjData, []interface{}{gs.IconString()}...)
+			pjData = append(pjData, []interface{}{gs.String()}...)
 		} else {
 			pjData = append(pjData, []interface{}{""}...)
 		}
