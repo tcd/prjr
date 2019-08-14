@@ -32,9 +32,10 @@ func Todos(path string) []Todo {
 			for _, match := range matches {
 				todo := Todo{
 					File:    filePaths[i],
+					RelPath: strings.Replace(filePaths[i], (path + "/"), "", -1),
 					Type:    match[1],
 					Author:  match[3],
-					Content: match[4],
+					Content: strings.TrimSpace(match[4]),
 				}
 				todos = append(todos, todo)
 			}
