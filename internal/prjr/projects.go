@@ -37,6 +37,26 @@ func (pjs Projects) FindByRoot(root string) (project Project, ok bool) {
 	return Project{}, false
 }
 
+// Names returns a slice of string with all Project Names.
+func (pjs Projects) Names() []string {
+	names := make([]string, len(pjs.P))
+	for i, project := range pjs.P {
+		names[i] = project.Name
+	}
+	return names
+}
+
+// FindByName returns a Project identified by its Name,
+// and a boolean which is false if no matching Project is found.
+func (pjs Projects) FindByName(name string) (project Project, ok bool) {
+	for _, pj := range pjs.P {
+		if pj.Root == name {
+			return pj, true
+		}
+	}
+	return Project{}, false
+}
+
 // RemoveByRoot removes a Project identified by its Root.
 func (pjs *Projects) RemoveByRoot(root string) {
 	var newPjs Projects
