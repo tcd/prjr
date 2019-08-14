@@ -54,16 +54,12 @@ func fancyUsage() {
 
 add
 	Add a new project
-
 list, ls
 	List existing projects
-
 remove, rm
 	Remove an existing project
-
 stat
 	Print Git info for a project
-
 todo
 	Search a project for TODO comments`)
 	flag.PrintDefaults()
