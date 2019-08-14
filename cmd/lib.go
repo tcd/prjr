@@ -20,3 +20,15 @@ func toLower(slice []string) []string {
 	}
 	return newSlice
 }
+
+// Returns a fancy ascii title.
+func titleString() string {
+	return `   _______    _______        ___   _______
+  |   __ "\  /"      \      |"  | /"      \
+  (. |__) :)|:        |     ||  ||:        |
+  |:  ____/ |_____/   )     |:  ||_____/   )
+  (|  /      //      /   ___|  /  //      /
+ /|__/ \    |:  __   \  /  :|_/ )|:  __   \
+(_______)   |__|  \___)(_______/ |__|  \___)
+`
+}

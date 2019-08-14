@@ -10,11 +10,9 @@ import (
 	"github.com/tcd/prjr/internal/prjr"
 )
 
-// todoCmd represents the todo command
 var todoCmd = &cobra.Command{
 	Use:   "todo",
 	Short: "List TODO comments in a project",
-	Long:  `List TODO comments in a project`,
 	Run: func(cmd *cobra.Command, args []string) {
 		projects, err := prjr.GetLocalProjects()
 		if err != nil {

@@ -9,11 +9,9 @@ import (
 	"github.com/tcd/prjr/internal/prjr"
 )
 
-// statCmd represents the stat command
 var statCmd = &cobra.Command{
 	Use:   "stat",
 	Short: "Print Git status information for a project",
-	Long:  `Print Git status information for a project`,
 	Run: func(cmd *cobra.Command, args []string) {
 		projects, err := prjr.GetLocalProjects()
 		if err != nil {
@@ -21,7 +19,6 @@ var statCmd = &cobra.Command{
 			os.Exit(1)
 		}
 		statFunc(projects)
-
 	},
 }
 
@@ -42,6 +39,7 @@ func statFunc(pjs prjr.Projects) {
 			status, err := pj.GitStatus()
 			if err != nil {
 				fmt.Println(err)
+				os.Exit(1)
 			}
 			fmt.Println(status)
 		}

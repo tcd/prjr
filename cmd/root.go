@@ -3,8 +3,10 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 
 	"github.com/spf13/cobra"
+	"github.com/spf13/cobra/doc"
 
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/viper"
@@ -12,19 +14,21 @@ import (
 
 var cfgFile string
 
-// rootCmd represents the base command when called without any subcommands.
 var rootCmd = &cobra.Command{
 	Use:   "prjr",
-	Short: "prjr: A command line project manager",
-	Long: `  _______    _______        ___   _______
-  |   __ "\  /"      \      |"  | /"      \
-  (. |__) :)|:        |     ||  ||:        |
-  |:  ____/ |_____/   )     |:  ||_____/   )
-  (|  /      //      /   ___|  /  //      /
- /|__/ \    |:  __   \  /  :|_/ )|:  __   \
-(_______)   |__|  \___)(_______/ |__|  \___)
-`,
-	//	Run: func(cmd *cobra.Command, args []string) { },
+	Short: "A command line project manager",
+	Long:  titleString(),
+	Run: func(cmd *cobra.Command, args []string) {
+		if len(args) == 0 {
+			cmd.Help()
+			os.Exit(0)
+		}
+
+		outputPath, _ := cmd.Flags().GetString("manpages")
+		if outputPath != "" {
+			genMan(cmd, outputPath)
+		}
+	},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -40,15 +44,12 @@ func Execute() {
 func init() {
 	// cobra.OnInitialize(initConfig)
 
-	// Here you will define your flags and configuration settings.
-	// Cobra supports persistent flags, which, if defined here,
-	// will be global for your application.
-
+	// Cobra supports persistent flags, which, if defined here, will be global for your application.
 	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.prjr.yaml)")
 
-	// Cobra also supports local flags,
-	// which will only run when this action is called directly.
-	// rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd.Flags().BoolP("version", "v", false, "Output version information about prjr")
+	rootCmd.Flags().String("manpages", "", "Output prjr man pages to a given directory")
+	rootCmd.Flags().MarkHidden("manpages")
 }
 
 // initConfig reads in config file and ENV variables if set.
@@ -74,5 +75,20 @@ func initConfig() {
 	// If a config file is found, read it in.
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Println("Using config file:", viper.ConfigFileUsed())
+	}
+}
+
+func genMan(cmd *cobra.Command, path string) {
+	if filepath.IsAbs(path) {
+		header := &doc.GenManHeader{
+			Title:   "PRJR",
+			Section: "1",
+			Source:  "",
+		}
+		doc.GenManTree(cmd, header, path)
+		os.Exit(0)
+	} else {
+		fmt.Fprintln(os.Stderr, "Please provide an absolute path")
+		os.Exit(1)
 	}
 }

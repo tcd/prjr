@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/spf13/cobra"
 	"github.com/tcd/prjr/internal/cli"
@@ -10,18 +11,15 @@ import (
 )
 
 var lsCmd = &cobra.Command{
-	Use:     "ls",
+	Use:     "ls [OPTIONS]",
 	Aliases: []string{"list"},
 	Short:   "List all projects",
-	Long:    `List all projects`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// Set up
 		projects, err := prjr.GetLocalProjects()
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)
 		}
-		// Can't list projects if none exist.
 		if len(projects.P) == 0 {
 			fmt.Println("No projects")
 			os.Exit(0)
@@ -59,15 +57,15 @@ func listFunc(pjs prjr.Projects) {
 func listFuncFields(pjs prjr.Projects, fields []string) {
 	if len(pjs.P) > 0 {
 		for _, pj := range pjs.P {
+			var toPrint []string
 			if contains(fields, "name") {
-				fmt.Print(pj.Name)
-				fmt.Print("\t")
+				toPrint = append(toPrint, pj.Name)
 			}
 			if contains(fields, "root") {
-				fmt.Print(pj.Root)
-				fmt.Print("\t")
+				toPrint = append(toPrint, pj.Root)
 			}
-			fmt.Print("\n")
+			output := strings.Join(toPrint, "\t")
+			fmt.Println(output)
 		}
 	} else {
 		fmt.Println("No projects")
@@ -78,8 +76,9 @@ func listFuncFields(pjs prjr.Projects, fields []string) {
 func listFuncTable(pjs prjr.Projects) {
 	if len(pjs.P) > 0 {
 		cli.Table(pjs)
+		os.Exit(0)
 	} else {
 		fmt.Println("No projects")
+		os.Exit(0)
 	}
-	os.Exit(0)
 }

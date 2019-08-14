@@ -10,9 +10,8 @@ import (
 )
 
 var addCmd = &cobra.Command{
-	Use:   "add",
+	Use:   "add [OPTIONS]",
 	Short: "Add a new Project",
-	Long:  `Add a new Project`,
 	Args:  cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
 		projects, err := prjr.GetLocalProjects()
@@ -32,21 +31,19 @@ var addCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(addCmd)
-	addCmd.Flags().BoolP("noconfirm", "Y", false, "Bypass any and all confirmation messages.")
+	addCmd.Flags().BoolP("noconfirm", "Y", false, "Bypass any and all confirmation messages")
 }
 
 func addFunc(pjs prjr.Projects) {
 	shouldAdd := false
-	prompt := &survey.Confirm{
-		Message: "Add the current directory as a project?",
-	}
+	prompt := &survey.Confirm{Message: "Add the current directory as a project?"}
 	survey.AskOne(prompt, &shouldAdd)
 
 	if shouldAdd {
 		pj, err := prjr.NewProjectHere()
 		if err != nil {
 			fmt.Println(err)
-			return
+			os.Exit(1)
 		}
 
 		pjs.Add(pj)
@@ -59,13 +56,14 @@ func addFunc(pjs prjr.Projects) {
 			os.Exit(0)
 		}
 	}
+	os.Exit(1)
 }
 
 func addFuncNoconfirm(pjs prjr.Projects) {
 	pj, err := prjr.NewProjectHere()
 	if err != nil {
 		fmt.Println(err)
-		return
+		os.Exit(1)
 	}
 
 	pjs.Add(pj)
