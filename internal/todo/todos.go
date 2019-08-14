@@ -31,8 +31,8 @@ func Todos(path string) []Todo {
 		if matches != nil {
 			for _, match := range matches {
 				todo := Todo{
-					File:    filePaths[i],
-					RelPath: strings.Replace(filePaths[i], (path + "/"), "", -1),
+					File: filePaths[i],
+					// RelPath: strings.Replace(filePaths[i], (path + "/"), "", -1),
 					Type:    match[1],
 					Author:  match[3],
 					Content: strings.TrimSpace(match[4]),
