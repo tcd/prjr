@@ -10,25 +10,31 @@ import (
 )
 
 var utilCmd = &cobra.Command{
-	Use:       "util [bash|zsh|man]",
-	Short:     "Generate completion files or manual pages for prjr",
-	Hidden:    true,
-	Args:      cobra.ExactArgs(1),
-	ValidArgs: []string{"bash", "zsh", "man"},
+	Use:    "util",
+	Short:  "Generate completion files or manual pages for prjr",
+	Hidden: true,
+	Args:   cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
-		if args[0] == "bash" {
-			rootCmd.GenBashCompletion(os.Stdout)
-			os.Exit(0)
-		}
-		if args[0] == "zsh" {
+		zsh, _ := cmd.Flags().GetBool("zsh")
+		if zsh {
 			rootCmd.GenZshCompletion(os.Stdout)
 			os.Exit(0)
 		}
+
+		bash, _ := cmd.Flags().GetBool("bash")
+		if bash {
+			rootCmd.GenBashCompletion(os.Stdout)
+			os.Exit(0)
+		}
+
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(utilCmd)
+	utilCmd.Flags().Bool("bash", false, "Print prjr bash completions to stdout")
+	utilCmd.Flags().Bool("zsh", false, "Print prjr zsh completions to stdout")
+	utilCmd.Flags().String("man", "", "Path to a directory prjr manpages should be added to")
 }
 
 func genMan(cmd *cobra.Command, path string) {
