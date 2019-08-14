@@ -41,11 +41,13 @@ var ignoredFolders = []string{
 	"__pycache__",
 	".mypy_cache",
 	".sass-cache",
+	"dist",
 }
 
 // don't search these files for TODOs
 var ignoredFiles = []string{
 	".DS_Store",
+	"tags",
 }
 
 // don't search files with these extensions for TODOs
