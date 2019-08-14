@@ -1,5 +1,7 @@
 # internal
 
+- cli/
+  - Code for the prjr command line interface.
 - prjr/
   - Code regarding Project models and operations.
 - stat/
