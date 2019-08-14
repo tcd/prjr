@@ -11,12 +11,7 @@ import (
 func newProjectFromDirectory(path string) (Project, error) {
 	var pj Project
 
-	absPath, err := filepath.Abs(path)
-	if err != nil {
-		return pj, err
-	}
-
-	pjContents, err := readDir(absPath)
+	pjContents, err := readDir(path)
 	if err != nil {
 		return pj, err
 	}
@@ -25,10 +20,8 @@ func newProjectFromDirectory(path string) (Project, error) {
 			pj.VCS = true
 		}
 	}
-
-	pj.Root = absPath
-	pj.Name = filepath.Base(absPath)
-
+	pj.Root = path
+	pj.Name = filepath.Base(path)
 	return pj, nil
 }
 
