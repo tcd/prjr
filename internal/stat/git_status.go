@@ -1,6 +1,9 @@
 package stat
 
-import "strings"
+import (
+	"strconv"
+	"strings"
+)
 
 // GitBranchInfo contains info about a local Git repository's current branch.
 type GitBranchInfo struct {
@@ -50,6 +53,16 @@ func (gs GitStatus) Diverged() bool {
 	return false
 }
 
+// AheadString returns the Ahead field as a string.
+func (gs GitStatus) AheadString() string {
+	return strconv.Itoa(gs.Ahead)
+}
+
+// BehindString returns the Behind field as a string.
+func (gs GitStatus) BehindString() string {
+	return strconv.Itoa(gs.Ahead)
+}
+
 func (gs GitStatus) String() string {
 	var s []string // This isn't too efficient but it will, at most, reallocate s 12 times.
 
@@ -57,10 +70,10 @@ func (gs GitStatus) String() string {
 		s = append(s, "Branch: "+gs.BranchName)
 	}
 	if gs.Ahead > 0 {
-		s = append(s, "Ahead by "+string(gs.Ahead))
+		s = append(s, "Ahead by "+gs.AheadString())
 	}
 	if gs.Behind > 0 {
-		s = append(s, "Behind by "+string(gs.Behind))
+		s = append(s, "Behind by "+gs.BehindString())
 	}
 	if gs.Modified {
 		s = append(s, "Modified")
@@ -126,43 +139,32 @@ func (gs GitStatus) IconString() string {
 	if gs.BranchName != "" {
 		sb.WriteString(gs.BranchName + " ")
 	}
-	// Ahead  int
 	if gs.Ahead > 0 {
 		sb.WriteString(Icons.Ahead)
 		sb.WriteString(string(gs.Ahead))
 	}
-	// Behind int
 	if gs.Behind > 0 {
 		sb.WriteString(Icons.Behind)
 		sb.WriteString(string(gs.Behind))
 	}
-	// Modified bool
 	if gs.Modified {
 		sb.WriteString(Icons.Modified)
 	}
-	// Added bool
 	if gs.Added {
 		sb.WriteString(Icons.Added)
 	}
-	// Deleted bool
 	if gs.Deleted {
 		sb.WriteString(Icons.Deleted)
 	}
-	// Renamed bool
-	// Copied bool
-	// UpdatedUnmerged bool
 	if gs.UpdatedUnmerged {
 		sb.WriteString(Icons.Unmerged)
 	}
-	// Untracked bool
 	if gs.Untracked {
 		sb.WriteString(Icons.Untracked)
 	}
-	// Staged bool
 	if gs.Staged {
 		sb.WriteString(Icons.Staged)
 	}
-	// Stashed int
 	if gs.Stashed > 0 {
 		sb.WriteString(Icons.Stashed)
 	}
