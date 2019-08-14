@@ -78,7 +78,8 @@ var Icons = GitStatusIconSet{
 	Diverged:  "⇕",
 }
 
-func (gs GitStatus) String() string {
+// IconString returns a string of unicode icons representing GitStatus.
+func (gs GitStatus) IconString() string {
 	var sb strings.Builder
 
 	// Branch string
