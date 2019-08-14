@@ -49,12 +49,7 @@ func init() {
 
 func listFunc(pjs prjr.Projects) {
 	if len(pjs.P) > 0 {
-		for _, pj := range pjs.P {
-			fmt.Print(pj.Name)
-			fmt.Print("\t")
-			fmt.Print(pj.Root)
-			fmt.Print("\n")
-		}
+		fmt.Print(tui.Tab(pjs))
 	} else {
 		fmt.Println("No projects")
 	}

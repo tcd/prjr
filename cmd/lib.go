@@ -1,5 +1,7 @@
 package cmd
 
+import "strings"
+
 // check if a slice of string contains a specific string.
 func contains(slice []string, str string) bool {
 	for _, v := range slice {
@@ -8,4 +10,13 @@ func contains(slice []string, str string) bool {
 		}
 	}
 	return false
+}
+
+// converts all strings in a slice to lowercase.
+func toLower(slice []string) []string {
+	newSlice := make([]string, len(slice))
+	for i, s := range slice {
+		newSlice[i] = strings.ToLower(s)
+	}
+	return newSlice
 }
