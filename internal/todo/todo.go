@@ -4,10 +4,11 @@ import "strings"
 
 // Todo comment in a file.
 type Todo struct {
-	File    string
-	Type    string
-	Author  string
-	Content string
+	File    string // Full path to the file the TODO is from.
+	RelPath string // Path to the file containing the todo relative to the project root.
+	Type    string // Type of TODO; ex: TODO, FIXME, etc.
+	Author  string // Name of the person who left the TODO, if present.
+	Content string // The comment following the TODO keywork.
 }
 
 func (t Todo) String() string {
