@@ -13,3 +13,6 @@ test/testdata/example_projects/*
 .idea
 .vscode
 **/tags
+
+# compiled files
+/build/*
