@@ -9,16 +9,22 @@ import (
 // ListFilesRecursive returns the full path of all files within a folder.
 func ListFilesRecursive(targetPath string) []string {
 	var paths []string
-	os.Chdir(targetPath)
-	err := filepath.Walk(".", func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk(targetPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
 		if info.IsDir() && contains(ignoredFolders, info.Name()) {
 			return filepath.SkipDir
 		}
-		if !info.IsDir() && !contains(ignoredFiles, info.Name()) {
-			paths = append(paths, filepath.Join(targetPath, path))
+		if !info.IsDir() {
+			fileName := filepath.Base(path)
+			if !contains(ignoredFiles, fileName) {
+				extension := filepath.Ext(path)
+				if !contains(ignoredExtensions, extension) {
+					paths = append(paths, filepath.Join(targetPath, path))
+				}
+
+			}
 		}
 		return nil
 	})

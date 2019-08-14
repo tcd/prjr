@@ -35,15 +35,26 @@ var todoStrings = []string{
 
 // don't search these folders for TODOs
 var ignoredFolders = []string{
+	"bin",
+	"dist",
+	"vendor",
+	"undo",
+	"logs",
+	"storage",
+	"cache",
+	// Version Control
 	".git",
+	".hg",
+	".svn",
+	// Node
 	"node_modules",
 	"bower_components",
-	"vendor",
+	"_cacache",
+	// Python
 	"__pycache__",
 	".mypy_cache",
+	// Ruby
 	".sass-cache",
-	"dist",
-	"undo",
 }
 
 // don't search these files for TODOs
@@ -54,9 +65,30 @@ var ignoredFiles = []string{
 
 // don't search files with these extensions for TODOs
 var ignoredExtensions = []string{
+	// sensitive files
+	".pem",
+	".crt",
+	".key",
+	// eBook build output
+	".epub",
+	".mobi",
+	".pdf",
 	// compressed files
 	".tgz",
 	".zip",
+	// media files, etc.
+	".png",
+	".jpg",
+	".jpeg",
+	".svg",
+	".gif",
+	".mp4",
+	".mp3",
+	// fonts
+	".tiff",
+	".ttf",
+	".otf",
+	".map",
 	// compiled/built files
 	".beam",
 	".dll",
@@ -65,11 +97,11 @@ var ignoredExtensions = []string{
 	".obj",
 	".out",
 	".so",
-	// eBook build output
-	".epub",
-	".mobi",
-	".pdf",
 	// misc
-	".png",
-	".rs.bk",
+	".json", // No comments in json 😉
+	".plist",
+	".bk",
+	".log",
+	".nib",
+	".strings",
 }
