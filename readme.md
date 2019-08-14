@@ -1,5 +1,8 @@
 # prjr
 
+[![GitHub issues](https://img.shields.io/github/issues/tcd/prjr)](https://github.com/tcd/prjr/issues)
+[![GitHub](https://img.shields.io/github/license/tcd/prjr)](https://github.com/tcd/prjr/blob/master/LICENSE)
+
 <div align="center">
     <img src="https://raw.githubusercontent.com/dunstontc/assets/master/gifs/fur-sure.gif" alt="fur_sure"/>
 </div>
