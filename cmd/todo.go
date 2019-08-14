@@ -6,6 +6,7 @@ import (
 
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/spf13/cobra"
+	"github.com/tcd/prjr/internal/cli"
 	"github.com/tcd/prjr/internal/prjr"
 )
 
@@ -39,9 +40,7 @@ func todoFunc(pjs prjr.Projects) {
 		pj, ok := pjs.FindByRoot(root)
 		if ok {
 			todos := pj.TODOs()
-			for _, todo := range todos {
-				fmt.Println(todo)
-			}
+			fmt.Println(cli.TabTodos(todos))
 		}
 	}
 	os.Exit(0)

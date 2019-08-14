@@ -7,14 +7,31 @@ import (
 	"text/tabwriter"
 
 	"github.com/tcd/prjr/internal/prjr"
+	"github.com/tcd/prjr/internal/todo"
 )
 
-// Tab returns a formatted list of Projects.
-func Tab(pjs prjr.Projects) string {
+// TabProjects returns a formatted list of Projects.
+func TabProjects(pjs prjr.Projects) string {
 	var buf bytes.Buffer
 	writer := tabwriter.NewWriter(&buf, 0, 8, 1, '\t', tabwriter.AlignRight)
 	for _, pj := range pjs.P {
 		fmt.Fprintln(writer, strings.Join([]string{pj.Name, pj.Root}, "\t"))
+	}
+	err := writer.Flush()
+	if err != nil {
+		fmt.Println(err)
+	}
+	return buf.String()
+}
+
+// TabTodos returns a formatted list of Todos.
+func TabTodos(todos []todo.Todo) string {
+	var buf bytes.Buffer
+	writer := tabwriter.NewWriter(&buf, 0, 8, 1, '\t', tabwriter.AlignRight)
+	fmt.Fprintln(writer, strings.Join([]string{"path", "type", "content"}, "\t"))
+	fmt.Fprintln(writer, strings.Join([]string{"----", "----", "-------"}, "\t"))
+	for _, t := range todos {
+		fmt.Fprintln(writer, strings.Join([]string{t.RelPath, t.Type, t.Content}, "\t"))
 	}
 	err := writer.Flush()
 	if err != nil {

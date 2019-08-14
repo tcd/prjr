@@ -49,7 +49,7 @@ func init() {
 
 func listFunc(pjs prjr.Projects) {
 	if len(pjs.P) > 0 {
-		fmt.Print(cli.Tab(pjs))
+		fmt.Print(cli.TabProjects(pjs))
 	} else {
 		fmt.Println("No projects")
 	}

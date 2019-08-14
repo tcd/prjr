@@ -47,11 +47,12 @@ func tableFormat(pjs prjr.Projects) [][]interface{} {
 			pj.Root,
 		}
 		pjData = append(pjData, []interface{}{pj.TODOCount()}...)
-		// if pj.VCS {
-		// 	pjData = append(pjData, []interface{}{"✔"}...)
-		// } else {
-		// 	pjData = append(pjData, []interface{}{""}...)
-		// }
+		if pj.VCS {
+			gs, _ := pj.GitStatus()
+			pjData = append(pjData, []interface{}{gs.IconString()}...)
+		} else {
+			pjData = append(pjData, []interface{}{""}...)
+		}
 		data = append(data, pjData)
 	}
 	return data
