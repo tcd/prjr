@@ -9,6 +9,7 @@ import (
 
 // Table prints a pretty table of all projects.
 // ⎇ ✓ ✔ ✗
+// https://github.com/alexeyco/simpletable
 func Table(pjs prjr.Projects) {
 	var data = tableFormat(pjs)
 
@@ -19,7 +20,7 @@ func Table(pjs prjr.Projects) {
 			{Align: simpletable.AlignCenter, Text: "Name"},
 			{Align: simpletable.AlignCenter, Text: "Root"},
 			{Align: simpletable.AlignCenter, Text: "TODOs"},
-			{Align: simpletable.AlignCenter, Text: "Git Status"},
+			// {Align: simpletable.AlignCenter, Text: "Git Status"},
 		},
 	}
 
@@ -28,7 +29,7 @@ func Table(pjs prjr.Projects) {
 			{Text: row[0].(string)},
 			{Text: row[1].(string)},
 			{Align: simpletable.AlignLeft, Text: fmt.Sprintf("%d", row[2].(int))},
-			{Text: row[2].(string)},
+			// {Text: row[3].(string)},
 		}
 		table.Body.Cells = append(table.Body.Cells, r)
 	}
@@ -46,12 +47,12 @@ func tableFormat(pjs prjr.Projects) [][]interface{} {
 			pj.Root,
 		}
 		pjData = append(pjData, []interface{}{pj.TODOCount()}...)
+		// if pj.VCS {
+		// 	pjData = append(pjData, []interface{}{"✔"}...)
+		// } else {
+		// 	pjData = append(pjData, []interface{}{""}...)
+		// }
 		data = append(data, pjData)
-		if pj.VCS {
-			pjData = append(pjData, []interface{}{"✔"}...)
-		} else {
-			pjData = append(pjData, []interface{}{""}...)
-		}
 	}
 	return data
 }
