@@ -1,1 +1,1 @@
-docker rmi $(docker images | awk '/^<none>/ {print $3}')
+docker rmi --force $(docker images | awk '/^<none>/ {print $3}')
