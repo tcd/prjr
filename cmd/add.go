@@ -19,6 +19,12 @@ var addCmd = &cobra.Command{
 			fmt.Println(err)
 			os.Exit(1)
 		}
+		cwd, _ := os.Getwd()
+		_, ok := projects.FindByRoot(cwd)
+		if ok {
+			fmt.Println("This directory is already a project.")
+			os.Exit(1)
+		}
 
 		noconfirm, _ := cmd.Flags().GetBool("noconfirm")
 		if noconfirm {
