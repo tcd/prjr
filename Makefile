@@ -1,5 +1,3 @@
-.DEFAULT_GOAL := help
-
 GO ?= go
 SHELL := /bin/sh
 GOBIN_DIR=${GOBIN}
