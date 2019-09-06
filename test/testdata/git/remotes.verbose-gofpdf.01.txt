@@ -1,0 +1,4 @@
+origin	git@github.com:tcd/gofpdf.git (fetch)
+origin	git@github.com:tcd/gofpdf.git (push)
+upstream	https://github.com/jung-kurt/gofpdf.git (fetch)
+upstream	https://github.com/jung-kurt/gofpdf.git (push)
