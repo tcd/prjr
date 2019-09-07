@@ -1,0 +1,5 @@
+origin	git@github.com:tcd/extedit.git (fetch)
+origin	git@github.com:tcd/extedit.git (push)
+upstream	https://github.com/kioopi/extedit.git (fetch)
+upstream	https://github.com/kioopi/extedit.git (push)
+
