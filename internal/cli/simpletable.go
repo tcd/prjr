@@ -38,6 +38,7 @@ func Table(pjs prjr.Projects) {
 	table.Println()
 }
 
+// wrangle Projects into a "type" suitable for printing with SimpleTable.
 func tableFormat(pjs prjr.Projects) [][]interface{} {
 	var data [][]interface{}
 
